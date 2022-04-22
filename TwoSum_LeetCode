@@ -1,0 +1,47 @@
+/*
+//  Brute-Force approach with O(n^2) time complexity
+
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        int ans[] = new int[2];
+        
+        for(int i = 0; i < nums.length; i++){
+            for(int j = i+1; j < nums.length; j++){
+                if(nums[i]+nums[j] == target){
+                    ans[0] = i;
+                    ans[1] = j;
+                }
+            }
+        }
+        return ans;
+    }
+}
+
+*/
+import java.util.*;
+
+//  Better time complexity of O(n) using hashmap
+
+class Solution {
+    public int[] twoSum(int[] nums, int target){
+        
+        HashMap<Integer, Integer> hash = new HashMap();
+        int length = nums.length;
+        int ans[] = new int[2];
+        
+        for(int i = 0; i < length; i++) {
+            
+            if (hash.containsKey(nums[i])) {
+                ans[0] = hash.get(nums[i]);
+                ans[1] = i;
+                break;
+            }
+            else {
+                hash.put(target-nums[i], i);
+            }
+        }
+        return ans;
+        
+    }
+
+}
